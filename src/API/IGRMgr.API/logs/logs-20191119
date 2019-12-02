@@ -1,0 +1,8 @@
+{"@t":"2019-11-19T07:52:11.7511382Z","@mt":"Logger configured","Module":"API"}
+{"@t":"2019-11-19T07:52:14.0190095Z","@mt":"Domain module: False","Module":"API"}
+{"@t":"2019-11-19T07:52:14.0637214Z","@mt":"Quartz starting...","Module":"UserAccess"}
+{"@t":"2019-11-19T07:52:14.5810248Z","@mt":"Quartz started.","Module":"UserAccess"}
+{"@t":"2019-11-19T22:05:00.1518292Z","@mt":"Logger configured","Module":"API"}
+{"@t":"2019-11-19T22:05:01.3339513Z","@mt":"Domain module: False","Module":"API"}
+{"@t":"2019-11-19T22:05:01.3658810Z","@mt":"Quartz starting...","Module":"UserAccess"}
+{"@t":"2019-11-19T22:05:01.6664939Z","@mt":"Quartz started.","Module":"UserAccess"}

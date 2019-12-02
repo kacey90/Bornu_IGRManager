@@ -1,0 +1,28 @@
+[
+  {
+    "Name": "IGRMgr.API",
+    "apiSecrets": "",
+    "UserClaims": [
+      "name",
+      "email",
+      "phone_number",
+      "gender",
+      "address",
+      "family_name",
+      "given_name",
+      "middle_name",
+      "profile",
+      "IGRMgr.API"
+    ],
+    "scopes": [
+      {
+        "name": "IGRMgr.API",
+        "DisplayName": "Full access to IGRMgr.API"
+      },
+      {
+        "name": "openidc",
+        "DisplayName": "Read only access to IGRMgr.API"
+      }
+    ]
+  }
+]
