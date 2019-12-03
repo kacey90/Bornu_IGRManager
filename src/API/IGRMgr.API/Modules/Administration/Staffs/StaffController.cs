@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using IGRMgr.API.Configuration.Authorization;
 using IGRMgr.Modules.Administration.Application.Contracts;
+using IGRMgr.Modules.Administration.Application.Staffs.StaffQuery;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,11 +21,20 @@ namespace IGRMgr.API.Modules.Administration.Staffs
             _adminModule = administrationModule;
         }
 
-        [HttpPost]
-        [HasPermission(AdministrationPermissions.CreateStaff)]
-        public async Task<IActionResult> CreateStaff()
+        [HttpGet]
+        [HasPermission(AdministrationPermissions.GetAllStaffList)]
+        public async Task<IActionResult> GetAllStaffList()
         {
-            await _adminModule.ExecuteCommandAsync(new CreateUserCo)
+            var staffList = await _adminModule.ExecuteQueryAsync(new GetAllStaffsQuery());
+            return Ok(staffList);
+        }
+
+        [HttpGet("{id}")]
+        [HasPermission(AdministrationPermissions.GetAllStaffList)]
+        public async Task<IActionResult> StaffById(string id)
+        {
+            var staff = await _adminModule.ExecuteQueryAsync(new GetStaffByIdQuery(new Guid(id)));
+            return Ok(staff);
         }
     }
 }

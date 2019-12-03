@@ -1,0 +1,18 @@
+﻿using IGRMgr.Modules.Administration.Application.Contracts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IGRMgr.Modules.Administration.Application.Staffs.StaffQuery
+{
+    public class GetStaffByIdQuery : IQuery<StaffDto>
+    {
+        public GetStaffByIdQuery(Guid id)
+        {
+            Id = id;
+        }
+        public Guid Id { get; set; }
+    }
+}

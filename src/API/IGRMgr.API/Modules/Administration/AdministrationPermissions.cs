@@ -9,5 +9,6 @@ namespace IGRMgr.API.Modules.Administration
     public class AdministrationPermissions
     {
         public const string CreateStaff = "CreateStaff";
+        public const string GetAllStaffList = "GetAllStaffList";
     }
 }
