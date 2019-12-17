@@ -23,20 +23,23 @@ namespace IGRMgr.API
             IConfiguration configuration,
             ILogger logger)
         {
-            //builder.Populate(services);
-           
-            //var container = builder.Build();
+            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>().SingleInstance();
+            builder.RegisterType<ExecutionContextAccessor>().As<IExecutionContextAccessor>().SingleInstance();
 
-            //var httpContextAccessor = container.Resolve<IHttpContextAccessor>();
-            //var executionContextAccessor = new ExecutionContextAccessor(httpContextAccessor);
-
+            ExecutionContextAccessor executionContextAccessor = null;
             var emailsConfiguration = new EmailsConfiguration(configuration["EmailsConfiguration:FromEmail"]);
 
             builder.Register(e => new ExecutionContextAccessor(e.Resolve<IHttpContextAccessor>()));
-            builder.RegisterType<ExecutionContextAccessor>().As<IExecutionContextAccessor>().SingleInstance();
+            builder.Register(container =>
+            {
+                executionContextAccessor = new ExecutionContextAccessor(container.Resolve<IHttpContextAccessor>());
+                return executionContextAccessor;
+            });
+            
 
             UserAccessStartup.Initialize(
                 configuration.GetConnectionString("DefaultConnection"),
+                executionContextAccessor,
                 migrationsAssembly,
                 logger,
                 emailsConfiguration,

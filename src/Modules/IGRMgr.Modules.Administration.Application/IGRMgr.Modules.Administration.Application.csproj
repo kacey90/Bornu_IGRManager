@@ -9,6 +9,7 @@
     <PackageReference Include="Dapper" Version="2.0.30" />
     <PackageReference Include="FluentValidation" Version="8.5.1" />
     <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.0.0" />
     <PackageReference Include="Quartz" Version="3.0.7" />
     <PackageReference Include="Serilog" Version="2.9.0" />
@@ -20,6 +21,7 @@
     <ProjectReference Include="..\..\BuildingBlocks\Nubalance.BuildingBlocks.EventBus\Nubalance.BuildingBlocks.EventBus.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Nubalance.BuildingBlocks.Infrastructure\Nubalance.BuildingBlocks.Infrastructure.csproj" />
     <ProjectReference Include="..\IGRMgr.Modules.Administration.Infrastructure\IGRMgr.Modules.Administration.Infrastructure.csproj" />
+    <ProjectReference Include="..\IGRMgr.Modules.Administration.IntegrationEvents\IGRMgr.Modules.Administration.IntegrationEvents.csproj" />
     <ProjectReference Include="..\IGRMgr.Modules.UserAccess.IntegrationEvent\IGRMgr.Modules.UserAccess.IntegrationEvents.csproj" />
   </ItemGroup>
 

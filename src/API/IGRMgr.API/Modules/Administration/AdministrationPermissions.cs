@@ -10,5 +10,7 @@ namespace IGRMgr.API.Modules.Administration
     {
         public const string CreateStaff = "CreateStaff";
         public const string GetAllStaffList = "GetAllStaffList";
+        public const string GetAllBusinessPartners = "GetAllBusinessPartners";
+        public const string CreateBusinessPartner = "CreateBusinessPartner";
     }
 }

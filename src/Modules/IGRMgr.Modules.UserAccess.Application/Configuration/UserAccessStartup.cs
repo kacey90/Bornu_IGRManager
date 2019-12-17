@@ -27,7 +27,7 @@ namespace IGRMgr.Modules.UserAccess.Application.Configuration
         private static IContainer _container;
 
         public static void Initialize(string connectionString,
-            //IExecutionContextAccessor executionContextAccessor,
+            IExecutionContextAccessor executionContextAccessor,
             string migrationsAssembly,
             ILogger logger,
             EmailsConfiguration emailsConfiguration,
@@ -37,6 +37,7 @@ namespace IGRMgr.Modules.UserAccess.Application.Configuration
 
             ConfigureCompositionRoot(connectionString,
                 migrationsAssembly,
+                executionContextAccessor,
                 logger,
                 emailsConfiguration,
                 textEncryptionKey);
@@ -49,7 +50,7 @@ namespace IGRMgr.Modules.UserAccess.Application.Configuration
         private static void ConfigureCompositionRoot(
             string connectionString,
             string migrationsAssembly,
-            //IExecutionContextAccessor executionContextAccessor,
+            IExecutionContextAccessor executionContextAccessor,
             ILogger logger,
             EmailsConfiguration emailsConfiguration,
             string textEncryptionKey)
@@ -69,7 +70,7 @@ namespace IGRMgr.Modules.UserAccess.Application.Configuration
             containerBuilder.RegisterModule(new EmailModule(emailsConfiguration));
             containerBuilder.RegisterModule(new SecurityModule(textEncryptionKey));
 
-            //containerBuilder.RegisterInstance(executionContextAccessor);
+            containerBuilder.RegisterInstance(executionContextAccessor);
 
             _container = containerBuilder.Build();
 

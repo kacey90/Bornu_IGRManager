@@ -16,11 +16,13 @@ namespace IGRMgr.Modules.Administration.Application.Configuration.DataAccess
     {
         private readonly string _databaseConnectionString;
         private readonly ILoggerFactory _loggerFactory;
+        private readonly string _migrationsAssembly;
 
-        internal DataAccessModule(string databaseConnectionString, ILoggerFactory loggerFactory)
+        internal DataAccessModule(string databaseConnectionString, string migrationsAssemly, ILoggerFactory loggerFactory)
         {
             _databaseConnectionString = databaseConnectionString;
             _loggerFactory = loggerFactory;
+            _migrationsAssembly = migrationsAssemly;
         }
 
         protected override void Load(ContainerBuilder builder)
@@ -34,7 +36,8 @@ namespace IGRMgr.Modules.Administration.Application.Configuration.DataAccess
                 .Register(c =>
                 {
                     var dbContextOptionsBuilder = new DbContextOptionsBuilder<AdministrationContext>();
-                    dbContextOptionsBuilder.UseSqlServer(_databaseConnectionString);
+                    dbContextOptionsBuilder.UseSqlServer(_databaseConnectionString, sqlServerOptions => 
+                        sqlServerOptions.MigrationsAssembly(_migrationsAssembly));
 
                     dbContextOptionsBuilder
                         .ReplaceService<IValueConverterSelector, StronglyTypedIdValueConverterSelector>();

@@ -12,6 +12,7 @@ namespace IGRMgr.Modules.UserAccess.Domain.UserRegistrations
         public static UserRole Staff => new UserRole(nameof(Staff));
         public static UserRole Manager => new UserRole(nameof(Manager));
         public static UserRole Administrator => new UserRole(nameof(Administrator));
+        public static UserRole BusinessPartner => new UserRole(nameof(BusinessPartner));
         public string Value { get; }
 
         public UserRole(string value)

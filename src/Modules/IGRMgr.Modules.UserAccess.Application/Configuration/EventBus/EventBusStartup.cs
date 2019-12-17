@@ -23,6 +23,7 @@ namespace IGRMgr.Modules.UserAccess.Application.Configuration.EventBus
             var eventBus = UserAccessCompositionRoot.BeginLifetimeScope().Resolve<IEventBus>();
 
             SubscribeToIntegrationEvent<StaffCreatedIntegrationEvent>(eventBus, logger);
+            SubscribeToIntegrationEvent<BusinessPartnerCreatedIntegrationEvent>(eventBus, logger);
         }
 
         private static void SubscribeToIntegrationEvent<T>(IEventBus eventBus, ILogger logger) where T : IntegrationEvent

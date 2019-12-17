@@ -70,6 +70,10 @@ namespace IGRMgr.Modules.UserAccess.Domain.UserRegistrations
             _status = UserRegistrationStatus.WaitingForConfirmation;
 
             this.AddDomainEvent(new NewUserRegisteredDomainEvent(this.Id, _email, _firstName, _lastName, _middleName, _name, _dateRegistered));
+            //if (role == nameof(UserRole.Manager) || role == nameof(UserRole.Staff))
+            //    this.AddDomainEvent(new NewUserRegisteredDomainEvent(this.Id, _email, _firstName, _lastName, _middleName, _name, _dateRegistered));
+            //else if (role == nameof(UserRole.BusinessPartner))
+            //    this.AddDomainEvent(new NewBusinessPartnerUserRegisteredDomainEvent(this.Id, _email, _firstName, _lastName, _name, _dateRegistered));
         }
 
         public static UserRegistration RegisterNewUser(Guid id,

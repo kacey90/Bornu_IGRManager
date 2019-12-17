@@ -1,4 +1,6 @@
-﻿using IGRMgr.Modules.Administration.Domain.Staffs;
+﻿using IGRMgr.Modules.Administration.Domain.BusinessPartners;
+using IGRMgr.Modules.Administration.Domain.Staffs;
+using IGRMgr.Modules.Administration.Infrastructure.BusinessPartners;
 using IGRMgr.Modules.Administration.Infrastructure.InternalCommands;
 using IGRMgr.Modules.Administration.Infrastructure.Staffs;
 using Microsoft.EntityFrameworkCore;
@@ -25,11 +27,13 @@ namespace IGRMgr.Modules.Administration.Infrastructure
         public DbSet<InternalCommand> InternalCommands { get; set; }
         internal DbSet<OutboxMessage> OutboxMessages { get; set; }
         internal DbSet<Staff> Staffs { get; set; }
+        internal DbSet<BusinessPartner> BusinessPartners { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new InternalCommandEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new StaffEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new BusinessPartnerEntityTypeConfiguration());
         }
 
     }

@@ -61,9 +61,10 @@ namespace IGRMgr.API
         {
             services.AddControllers();
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<IExecutionContextAccessor, ExecutionContextAccessor>();
+            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //services.AddSingleton<IExecutionContextAccessor, ExecutionContextAccessor>();
 
+            services.AddHttpClient();
             services.AddProblemDetails(x =>
             {
                 x.Map<InvalidCommandException>(ex => new InvalidCommandProblemDetails(ex));

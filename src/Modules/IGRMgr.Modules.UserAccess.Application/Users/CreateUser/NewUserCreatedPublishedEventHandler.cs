@@ -1,4 +1,5 @@
-﻿using IGRMgr.Modules.UserAccess.IntegrationEvents;
+﻿using IGRMgr.Modules.UserAccess.Domain.UserRegistrations;
+using IGRMgr.Modules.UserAccess.IntegrationEvents;
 using MediatR;
 using Nubalance.BuildingBlocks.Infrastructure.EventBus;
 using System;
@@ -21,6 +22,9 @@ namespace IGRMgr.Modules.UserAccess.Application.Users.CreateUser
 
         public Task Handle(UserCreatedNotification notification, CancellationToken cancellationToken)
         {
+            if (notification.DomainEvent.Role == nameof(UserRole.BusinessPartner))
+                return Task.CompletedTask;
+
             _eventsBus.Publish(new NewUserCreatedIntegrationEvent(notification.Id, notification.DomainEvent.OccurredOn,
                 notification.DomainEvent.UserId.Value,
                 notification.DomainEvent.Email,
