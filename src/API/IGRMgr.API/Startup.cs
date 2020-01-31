@@ -10,6 +10,7 @@ using Hellang.Middleware.ProblemDetails;
 using IdentityServer4.AccessTokenValidation;
 using IGRMgr.API.Configuration.Authorization;
 using IGRMgr.API.Configuration.Validation;
+using IGRMgr.Modules.Administration.Infrastructure;
 using IGRMgr.Modules.UserAccess.Application.Configuration;
 using IGRMgr.Modules.UserAccess.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
@@ -161,6 +162,23 @@ namespace IGRMgr.API
             optionsBuilder.ReplaceService<IValueConverterSelector, StronglyTypedIdValueConverterSelector>();
 
             return new UserAccessContext(optionsBuilder.Options, null);
+        }
+    }
+
+    public class AdministrationContextFactory : IDesignTimeDbContextFactory<AdministrationContext>
+    {
+        public AdministrationContext CreateDbContext(string[] args)
+        {
+            IConfiguration config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            var optionsBuilder = new DbContextOptionsBuilder<AdministrationContext>();
+            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
+            optionsBuilder.ReplaceService<IValueConverterSelector, StronglyTypedIdValueConverterSelector>();
+
+            return new AdministrationContext(optionsBuilder.Options, null);
         }
     }
 }

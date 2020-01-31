@@ -2,6 +2,7 @@
 using IGRMgr.Modules.Administration.Domain.Staffs;
 using IGRMgr.Modules.Administration.Infrastructure.BusinessPartners;
 using IGRMgr.Modules.Administration.Infrastructure.InternalCommands;
+using IGRMgr.Modules.Administration.Infrastructure.Outbox;
 using IGRMgr.Modules.Administration.Infrastructure.Staffs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -34,6 +35,7 @@ namespace IGRMgr.Modules.Administration.Infrastructure
             modelBuilder.ApplyConfiguration(new InternalCommandEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new StaffEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new BusinessPartnerEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new OutboxMessageEntityTypeConfiguration());
         }
 
     }

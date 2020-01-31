@@ -27,7 +27,7 @@ namespace IGRMgr.Modules.Administration.Infrastructure.Staffs
             {
                 g.Property(p => p.Value).HasColumnName("Gender").HasMaxLength(50);
             });
-            builder.Property<DateTime>("_dateOfBirth").HasColumnName("DateOfBirth").HasColumnType("date");
+            builder.Property<DateTime?>("_dateOfBirth").HasColumnName("DateOfBirth").HasColumnType("date");
             builder.Property<string>("_jobTitle").HasColumnName("JobTitle").HasMaxLength(50);
             builder.Property<bool>("_isActive").HasColumnName("IsActive").IsRequired();
             builder.Property<DateTime>("_createDate").HasColumnName("CreateDate").IsRequired();

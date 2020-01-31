@@ -10,6 +10,8 @@
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="~/css/owl.carousel.min.css">
     <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/lib/datatables.net-bs4/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="~/lib/datatables.net-select-bs4/css/select.bootstrap4.min.css" />
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="~/css/style.css">
@@ -39,7 +41,22 @@
         </header>*@
     <div id="app">
         <div class="main-wrapper">
-            @RenderBody()
+            <div class="navbar-bg"></div>
+            <!-- Nav header -->
+            <partial name="_AppHeader" />
+            <!-- /Nav header-->
+
+            <!-- Sidebar Nav-->
+            <partial name="_SideBarNav.cshtml" />
+            <!-- /Sidebar Nav-->
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <section class="section">
+                    @RenderBody()
+                </section>
+            </div>
+            <!-- /Main Content -->
 
             <footer class="main-footer">
                 <div class="footer-left">
@@ -59,6 +76,9 @@
     <!-- JS Libraies -->
     <script src="~/js/jquery.sparkline.min.js"></script>
     <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/lib/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/datatables.net-select-bs4/js/select.bootstrap4.min.js"></script>
     @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
     @*<script src="~/js/site.js" asp-append-version="true"></script>*@
 
@@ -68,6 +88,7 @@
 
     <!-- Page Specific JS File -->
     <script src="~/js/page/index.js"></script>
+    
     @RenderSection("Scripts", required: false)
 </body>
 </html>
